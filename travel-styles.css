@@ -1,0 +1,517 @@
+/* ===== Travel Page Styles ===== */
+
+:root {
+    --bg-primary: #f5f3f0;
+    --bg-secondary: #ffffff;
+    --text-primary: #1a1a1a;
+    --text-secondary: #666666;
+    --border-color: #1a1a1a;
+    --accent-color: #0066cc;
+    --hover-bg: #eeebe8;
+    
+    --spacing-xs: 0.25rem;
+    --spacing-sm: 0.5rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 1.5rem;
+    --spacing-xl: 2rem;
+    --spacing-2xl: 3rem;
+    
+    --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    --font-mono: 'Courier New', 'Monaco', 'Menlo', monospace;
+    
+    --border-width: 2px;
+}
+
+/* Dark Mode */
+body.dark-mode {
+    --bg-primary: #1a1a1a;
+    --bg-secondary: #2d2d2d;
+    --text-primary: #f5f3f0;
+    --text-secondary: #b0b0b0;
+    --border-color: #f5f3f0;
+    --hover-bg: #3d3d3d;
+}
+
+/* ===== Base Styles ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    transition: background-color 0.3s ease, color 0.3s ease;
+    line-height: 1.6;
+}
+
+/* ===== Travel Container ===== */
+.travel-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: var(--bg-primary);
+}
+
+/* ===== Header ===== */
+.travel-header {
+    border-bottom: var(--border-width) solid var(--border-color);
+    background-color: var(--bg-secondary);
+    padding: var(--spacing-xl);
+}
+
+.header-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.back-button {
+    display: inline-block;
+    margin-bottom: var(--spacing-md);
+    padding: var(--spacing-md) var(--spacing-lg);
+    border: var(--border-width) solid var(--border-color);
+    background-color: transparent;
+    color: var(--text-primary);
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.back-button:hover {
+    background-color: var(--hover-bg);
+}
+
+.travel-header h1 {
+    font-size: 2.5rem;
+    margin-bottom: var(--spacing-md);
+    letter-spacing: -1px;
+}
+
+.subtitle {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    font-style: italic;
+}
+
+/* ===== Main Content ===== */
+.travel-main {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1fr 350px;
+    gap: var(--spacing-xl);
+    max-width: 1400px;
+    margin: 0 auto;
+    width: 100%;
+    padding: var(--spacing-xl);
+}
+
+.globe-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+}
+
+.three-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* ===== Globe ===== */
+.globe {
+    width: 100%;
+    height: 600px;
+    border: var(--border-width) solid var(--border-color);
+    background-color: rgba(255,255,255,0.08);
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    backdrop-filter: blur(8px);
+}
+
+.globe svg {
+    width: 100%;
+    height: 100%;
+}
+
+/* D3 Styling */
+.globe path {
+    stroke: var(--border-color);
+    stroke-width: 0.5px;
+    fill: var(--bg-secondary);
+}
+
+.globe-graticule {
+    stroke: var(--text-secondary);
+    stroke-width: 0.25px;
+    opacity: 0.3;
+}
+
+.globe-country {
+    fill: var(--hover-bg);
+    stroke: var(--border-color);
+    stroke-width: 0.5px;
+    cursor: pointer;
+    transition: fill 0.2s ease;
+}
+
+.globe-country:hover {
+    fill: var(--accent-color);
+    opacity: 0.8;
+}
+
+.destination-marker {
+    cursor: pointer;
+}
+
+.destination-marker circle {
+    fill: #e74c3c;
+    stroke: var(--text-primary);
+    stroke-width: 2px;
+    transition: all 0.2s ease;
+}
+
+.destination-marker:hover circle {
+    r: 8px;
+    fill: #c0392b;
+}
+
+.destination-marker text {
+    font-size: 12px;
+    fill: var(--text-primary);
+    pointer-events: none;
+    text-anchor: middle;
+    font-weight: 600;
+}
+
+/* ===== Controls ===== */
+.controls {
+    display: flex;
+    gap: var(--spacing-md);
+    align-items: center;
+    padding: var(--spacing-md);
+    border: var(--border-width) solid var(--border-color);
+    background-color: var(--bg-secondary);
+    flex-wrap: wrap;
+}
+
+.control-btn {
+    padding: var(--spacing-md) var(--spacing-lg);
+    border: var(--border-width) solid var(--border-color);
+    background-color: transparent;
+    color: var(--text-primary);
+    font-family: var(--font-family);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-weight: 600;
+}
+
+.control-btn:hover {
+    background-color: var(--hover-bg);
+}
+
+.control-btn:active {
+    transform: scale(0.98);
+}
+
+.controls label {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    cursor: pointer;
+    padding: var(--spacing-sm) var(--spacing-md);
+    border: var(--border-width) solid var(--border-color);
+    background-color: transparent;
+    transition: all 0.2s ease;
+}
+
+.controls label:hover {
+    background-color: var(--hover-bg);
+}
+
+.controls input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+}
+
+/* ===== Destination Panel ===== */
+.destination-panel {
+    display: flex;
+    flex-direction: column;
+    border: var(--border-width) solid var(--border-color);
+    background-color: var(--bg-secondary);
+    max-height: 600px;
+    overflow-y: auto;
+}
+
+.panel-content {
+    padding: var(--spacing-lg);
+}
+
+.destination-info {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-lg);
+    padding-bottom: var(--spacing-lg);
+    border-bottom: var(--border-width) solid var(--border-color);
+}
+
+.destination-info.hidden {
+    display: none;
+}
+
+.destination-info h2 {
+    font-size: 1.5rem;
+    margin-bottom: var(--spacing-sm);
+}
+
+.dest-meta {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+}
+
+.dest-meta p {
+    font-size: 0.9rem;
+    color: var(--accent-color);
+    font-weight: 600;
+}
+
+.destination-info p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.dest-stats {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.stat {
+    padding: var(--spacing-md);
+    background-color: var(--hover-bg);
+    border: var(--border-width) solid var(--border-color);
+}
+
+.stat-label {
+    font-weight: 600;
+    display: block;
+    margin-bottom: var(--spacing-sm);
+    color: var(--text-primary);
+}
+
+.stat p {
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+/* ===== Destinations List ===== */
+.destinations-list h3 {
+    font-size: 1.1rem;
+    margin-bottom: var(--spacing-md);
+    padding-bottom: var(--spacing-md);
+    border-bottom: var(--border-width) solid var(--border-color);
+}
+
+.list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.destination-item {
+    padding: var(--spacing-md);
+    border: var(--border-width) solid var(--border-color);
+    background-color: var(--hover-bg);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.destination-item:hover {
+    background-color: var(--accent-color);
+    color: white;
+}
+
+.destination-item.active {
+    background-color: var(--accent-color);
+    color: white;
+}
+
+.dest-name {
+    font-weight: 600;
+    margin-bottom: var(--spacing-xs);
+}
+
+.dest-tag {
+    font-size: 0.8rem;
+    opacity: 0.8;
+}
+
+/* ===== Footer ===== */
+.travel-footer {
+    border-top: var(--border-width) solid var(--border-color);
+    background-color: var(--bg-secondary);
+    padding: var(--spacing-lg);
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.travel-footer a {
+    color: var(--accent-color);
+    text-decoration: none;
+    border-bottom: 1px dotted var(--accent-color);
+}
+
+.travel-footer a:hover {
+    border-bottom-style: solid;
+}
+
+/* ===== Social Links ===== */
+.travel-social-links {
+    position: fixed;
+    top: var(--spacing-lg);
+    right: var(--spacing-lg);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    z-index: 1000;
+}
+
+.travel-social-links a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-sm) var(--spacing-md);
+    border: var(--border-width) solid var(--border-color);
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+.travel-social-links a:hover {
+    background-color: var(--hover-bg);
+    transform: translateY(-1px);
+}
+
+/* ===== Responsive Design ===== */
+@media (max-width: 1024px) {
+    .travel-main {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
+    }
+
+    .globe {
+        height: 500px;
+    }
+
+    .destination-panel {
+        max-height: 400px;
+    }
+}
+
+@media (max-width: 768px) {
+    .travel-header {
+        padding: var(--spacing-lg);
+    }
+
+    .travel-header h1 {
+        font-size: 1.8rem;
+    }
+
+    .travel-main {
+        padding: var(--spacing-lg);
+    }
+
+    .globe {
+        height: 400px;
+    }
+
+    .destination-panel {
+        max-height: 300px;
+    }
+
+    .controls {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .control-btn,
+    .controls label {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .travel-container {
+        padding: 0;
+    }
+
+    .travel-header {
+        padding: var(--spacing-md);
+    }
+
+    .travel-header h1 {
+        font-size: 1.4rem;
+    }
+
+    .subtitle {
+        font-size: 0.85rem;
+    }
+
+    .travel-main {
+        padding: var(--spacing-md);
+        gap: var(--spacing-md);
+    }
+
+    .globe {
+        height: 300px;
+    }
+
+    .destination-panel {
+        max-height: 250px;
+    }
+
+    .panel-content {
+        padding: var(--spacing-md);
+    }
+
+    .destination-info h2 {
+        font-size: 1.2rem;
+    }
+
+    .back-button {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+/* ===== Print Styles ===== */
+@media print {
+    body {
+        background-color: white;
+    }
+
+    .controls,
+    .destination-panel {
+        display: none;
+    }
+}

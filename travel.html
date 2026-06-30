@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel - Interactive Globe</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://d3js.org/topojson.v3.min.js"></script>
+    <link rel="stylesheet" href="travel-styles.css">
+</head>
+<body>
+    <div class="travel-container">
+        <!-- Header -->
+        <header class="travel-header">
+            <div class="header-content">
+                <a href="index.html" class="back-button">← Back to Portfolio</a>
+                <h1>My Travel Map 🌍</h1>
+                <p class="subtitle">Click on destinations to explore • Drag to rotate • Scroll to zoom</p>
+            </div>
+        </header>
+
+        <div class="travel-social-links">
+            <a href="https://github.com/vikas-032" target="_blank">GitHub</a>
+            <a href="https://www.linkedin.com/in/vikas-kumar-b40537285/" target="_blank">LinkedIn</a>
+            <a href="mailto:7014.vikas@gmail.com">Email</a>
+        </div>
+
+        <!-- Main Content -->
+        <main class="travel-main">
+            <!-- Globe Container -->
+            <div class="globe-container">
+                <div id="three-bg" class="three-bg"></div>
+                <div id="globe" class="globe"></div>
+                <div class="controls">
+                    <button id="resetButton" class="control-btn">Reset View</button>
+                    <label>
+                        <input type="checkbox" id="autoRotate" checked>
+                        Auto Rotate
+                    </label>
+                </div>
+            </div>
+
+            <!-- Destination Info Panel -->
+            <aside class="destination-panel">
+                <div class="panel-content">
+                    <div id="destinationInfo" class="destination-info hidden">
+                        <h2 id="destName"></h2>
+                        <div class="dest-meta">
+                            <p id="destStatus"></p>
+                            <p id="destDate"></p>
+                        </div>
+                        <p id="destDescription"></p>
+                        <div class="dest-stats">
+                            <div class="stat">
+                                <span class="stat-label">Highlights</span>
+                                <p id="destHighlights"></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="destinations-list">
+                        <h3>Destinations</h3>
+                        <div id="destinationsList" class="list"></div>
+                    </div>
+                </div>
+            </aside>
+        </main>
+
+        <!-- Footer -->
+        <footer class="travel-footer">
+            <p>Created with D3.js • <a href="index.html">Back to Home</a></p>
+        </footer>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r152/three.min.js"></script>
+    <script src="travel-globe.js"></script>
+</body>
+</html>

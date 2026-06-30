@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music - Floating Albums</title>
+    <link rel="stylesheet" href="music-styles.css">
+</head>
+<body>
+    <div class="music-page">
+        <header class="music-header">
+            <a href="index.html" class="back-button">← Back to Portfolio</a>
+            <div class="music-title-group">
+                <h1>music.exe</h1>
+                <p>an interactive vinyl board built with vanilla JavaScript.</p>
+            </div>
+        </header>
+
+        <main class="music-main">
+            <section class="music-stage-wrap">
+                <div id="music-stage" class="music-stage"></div>
+
+                <div class="music-overlay music-overlay-top-left">
+                    <div class="overlay-label">music.exe</div>
+                    <div class="overlay-row">
+                        <span>tap covers:</span>
+                        <strong>details</strong>
+                    </div>
+                    <div class="overlay-row">
+                        <span>corners:</span>
+                        <strong>0</strong>
+                    </div>
+                    <div class="overlay-range">
+                        <label for="speedSlider">speed</label>
+                        <input type="range" id="speedSlider" min="0.3" max="3" step="0.1" value="1">
+                        <span id="speedValue">1.0x</span>
+                    </div>
+                </div>
+
+                <div class="music-overlay music-overlay-bottom-left" id="hoverPanel">
+                    <div class="panel-label">now hovering</div>
+                    <div class="hover-info">
+                        <div id="hoverTitle">Hover an album</div>
+                        <div id="hoverArtist">Artist</div>
+                    </div>
+                </div>
+            </section>
+
+            <aside class="music-sidebar">
+                <div class="sidebar-panel">
+                    <h2>controls</h2>
+                    <button id="togglePlay" class="control-btn">pause</button>
+                    <button id="resetMotion" class="control-btn">reset</button>
+                </div>
+                <div class="sidebar-panel">
+                    <h2>notes</h2>
+                    <p>Hover a cover to inspect metadata. Click any album to open a new page with more details.</p>
+                </div>
+                <div class="sidebar-panel sidebar-links">
+                    <a href="https://github.com/vikas-032" target="_blank">GitHub</a>
+                    <a href="https://www.linkedin.com/in/vikas-kumar-b40537285/" target="_blank">LinkedIn</a>
+                    <a href="mailto:7014.vikas@gmail.com">Email</a>
+                </div>
+            </aside>
+        </main>
+
+        <footer class="music-footer">
+            <p>Built in vanilla JS • Floating albums loop • Hover tracking • Speed control</p>
+        </footer>
+    </div>
+
+    <script src="music.js"></script>
+</body>
+</html>
