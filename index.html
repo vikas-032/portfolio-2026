@@ -7,11 +7,30 @@
     <script>
         window.tailwind = {
             config: {
-                darkMode: 'class'
+                darkMode: 'class',
+                theme: {
+                    extend: {}
+                }
             }
         };
     </script>
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Force background color transitions */
+        body {
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        
+        html.dark body {
+            background-color: rgb(2, 6, 23); /* slate-950 */
+            color: rgb(241, 245, 249); /* slate-100 */
+        }
+        
+        html:not(.dark) body {
+            background-color: rgb(248, 250, 252); /* slate-50 */
+            color: rgb(15, 23, 42); /* slate-900 */
+        }
+    </style>
 </head>
 <body class="font-sans leading-7 bg-slate-50 text-slate-900 transition-colors duration-300 dark:bg-slate-950 dark:text-slate-100">
     <div class="mx-auto max-w-3xl px-6 py-8">
